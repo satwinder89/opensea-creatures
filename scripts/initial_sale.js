@@ -6,8 +6,15 @@ const MnemonicWalletSubprovider = require("@0x/subproviders")
 const RPCSubprovider = require("web3-provider-engine/subproviders/rpc");
 const Web3ProviderEngine = require("web3-provider-engine");
 
-const MNEMONIC = process.env.MNEMONIC;
-const NODE_API_KEY = process.env.INFURA_KEY || process.env.ALCHEMY_KEY;
+var configurationManager = require('./configurationManager');
+var configuration = configurationManager.configuration;
+
+// const MNEMONIC = process.env.MNEMONIC;
+const MNEMONIC = configuration.INFURA_KEY;
+
+// const NODE_API_KEY = process.env.INFURA_KEY || process.env.ALCHEMY_KEY;
+const NODE_API_KEY = configuration.INFURA_KEY || configuration.ALCHEMY_KEY;
+
 const isInfura = !!process.env.INFURA_KEY;
 const FACTORY_CONTRACT_ADDRESS = process.env.FACTORY_CONTRACT_ADDRESS;
 const OWNER_ADDRESS = process.env.OWNER_ADDRESS;

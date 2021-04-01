@@ -1,7 +1,15 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const web3 = require("web3");
-const MNEMONIC = process.env.MNEMONIC;
-const NODE_API_KEY = process.env.INFURA_KEY || process.env.ALCHEMY_KEY;
+
+var configurationManager = require('./configurationManager');
+var configuration = configurationManager.configuration;
+
+// const MNEMONIC = process.env.MNEMONIC;
+const MNEMONIC = configuration.INFURA_KEY;
+
+// const NODE_API_KEY = process.env.INFURA_KEY || process.env.ALCHEMY_KEY;
+const NODE_API_KEY = configuration.INFURA_KEY || configuration.ALCHEMY_KEY;
+
 const isInfura = !!process.env.INFURA_KEY;
 const FACTORY_CONTRACT_ADDRESS = process.env.FACTORY_CONTRACT_ADDRESS;
 const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT_ADDRESS;
